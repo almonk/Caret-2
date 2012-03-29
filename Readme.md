@@ -82,7 +82,7 @@ Our about page created above will be looking for a template called <code>default
 	<html>
 	<head>
 		<meta charset=utf-8 />
-		<title>{{ page. title }}</title>
+		<title>{{ page.title }}</title>
 		<link rel="stylesheet" type="text/css" href="{{ config.theme_root }}assets/css/master.css" />
 	</head>
 	<body>
