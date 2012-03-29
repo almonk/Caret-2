@@ -36,7 +36,7 @@ You'll see something like this:
 	$config['base_url']	= 'http://localhost/caret2/';
 	
 	
-Change this values to reflect your environment.
+Change the value of <code>$config['base_url']</code> to reflect the URL to your Caret installation.
 
 ### Step 2: Edit the .htaccess file
 
