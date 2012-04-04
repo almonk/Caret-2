@@ -101,7 +101,7 @@ Tags are written in your templates and help you do various things with your data
 For a full list of h2o tags, please see this list, this page covers tags **unique to Caret only**.
 
 ### get_from tag
-This tag allows you to grab data from any page of your Caret site. You could use it to avoid duplicating content in your pages.
+This tag allows you to grab data from any page of your Caret site. You could use it to avoid duplicating content in your pages. It takes the slug as the only parameter to find the page.
 
 For example, if we wanted to get the telephone number from our home page, we could use the following code in any page.
 
