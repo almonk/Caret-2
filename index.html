@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Caret-2 by almonk</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Caret-2</h1>
+<p>A NoDB, Yaml based CMS</p>
+        <p class="view"><a href="https://github.com/almonk/Caret-2">View the Project on GitHub <small>almonk/Caret-2</small></a></p>
+        <ul>
+          <li><a href="https://github.com/almonk/Caret-2/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/almonk/Caret-2/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/almonk/Caret-2">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="http://f.cl.ly/items/3M1k022P3v3G3F1M2I1P/caret2.png" alt="Caret2"></p>
+
+<p>Caret 2 is a little CMS, built in CodeIgniter, that allows you to quickly add a simple content management system to a website without the need for a database and with very little configuration.</p>
+
+<h2>Installation</h2>
+
+<p>The quickest way to get started on your local machine is with MAMP or XAMPP. Clone Caret into your htdocs directory:</p>
+
+<pre><code>git clone https://almonk@github.com/almonk/Caret-2.git caret2
+</code></pre>
+
+<p>Now browse to <code>http://localhost/caret2</code> and you should see the <strong>'FFFUU It works!'</strong> screen.</p>
+
+<h2>Configuration</h2>
+
+<h3>Step 1: Edit the config file</h3>
+
+<p>If your configuration is a little different, and it probably will be, open up the config file at <code>core/application/config/config.php</code>.</p>
+
+<p>You'll see something like this:</p>
+
+<pre><code>/*
+|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|   <a href="http://example.com/">http://example.com/</a>
+|
+| If this is not set then CodeIgniter will guess the protocol, domain and
+| path to your installation.
+|
+*/
+$config['base_url'] = 'http://localhost/caret2/';
+</code></pre>
+
+<p>Change the value of <code>$config['base_url']</code> to reflect the URL to your Caret installation.</p>
+
+<h3>Step 2: Edit the .htaccess file</h3>
+
+<p>In the root of your Caret installation, open up the .htaccess file. You'll see something like this:</p>
+
+<pre><code>RewriteEngine on
+RewriteCond $1 !^(index\.php|public|images|robots\.txt)
+RewriteRule ^(.*)$ /caret2/index.php/$1 [L]
+</code></pre>
+
+<p>Change the string <code>/caret2</code> to the name of your subfolder or, if you want Caret to run in the root of your domain remove it entirely (leaving just index.php).</p>
+
+<hr><h2>Writing content</h2>
+
+<p>Everything from the content to the assets and templates of your site are kept (by default) in the <code>site/</code> directory (we'll refer to this as the 'theme'). You can change the name of this folder within the <code>core/application/config/config.php</code> file.</p>
+
+<h3>Pages</h3>
+
+<p>Pages are where all your content lives. They are simple yaml files found within the <code>/site/content</code> directory. Let's go ahead and write our first page, it will be an about page, so we'll give it the filename <code>index.yaml</code>.</p>
+
+<p>Now the file has been created, we'll enter some content...</p>
+
+<pre><code>Title: Homepage
+Template: default
+Body: We are a small company founded in 1989...
+</code></pre>
+
+ 
+    <strong>Remember!</strong> Your page defines which layout renders it using the <code>Template:</code> key
+ 
+
+<p>Note that the folder structure in this directory corresponds exactly to your URL structure so that if we put an <code>index.yaml</code> file within <code>site/content/about</code> that page could be found at <code>http://localhost/caret2/about</code></p>
+
+<p>Now, we need to display that content with a template.</p>
+
+<h3>Relation to templates</h3>
+
+<p><img src="http://f.cl.ly/items/2F2q2a3y1y1w2p2p1R08/caret21.png" alt="Templates v Content"></p>
+
+<p>Templates are HTML files found within the <code>/site/templates</code> directory. These files prescribe how your content is rendered. Caret uses the <a href="http://www.h2o-template.org/">h2o templating language</a>, which keeps things clean &amp; simple.</p>
+
+<p>Our about page created above will be looking for a template called <code>default.hmtml</code>, so lets create that and fill it with a skeletal layout.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=utf-8 /&gt;
+    &lt;title&gt;{{ page.title }}&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="{{ config.theme_root }}assets/css/master.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+
+    {{ page.body }}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Now, if you visit <code>http://localhost/caret2/</code>, you should see your template rendered with the data from your about page pulled in. Magic.</p>
+
+<hr><h2>Tags</h2>
+
+<p>Tags are written in your templates and help you do various things with your data. 
+For a full list of h2o tags, please see this list, this page covers tags <strong>unique to Caret only</strong>.</p>
+
+<h3>get_from tag</h3>
+
+<p>This tag allows you to grab data from any page of your Caret site. You could use it to avoid duplicating content in your pages. It takes the slug as the only parameter to find the page.</p>
+
+<p>For example, if we wanted to get the telephone number from our home page, we could use the following code in any page.</p>
+
+<pre><code>{% get_from index %}
+    {{ get.phone }}
+{% end get_from %}
+</code></pre>
+
+<hr><h3>children_of tag (experimental)</h3>
+
+<p>This tag fetches children from a specified slug and returns them as an array. For example, if I had the site structure:</p>
+
+<pre><code>/ content
+    index.yaml
+    /about
+        index.yaml
+        our-manifesto.yaml
+        history.yaml
+</code></pre>
+
+<p>…I could use the following code in my templates to create a sidebar that links to all the pages under 'about'.</p>
+
+<pre><code>{% children_of about %}
+    &lt;ul&gt;
+        {% for child in children %}
+            &lt;li&gt;{{ child.title | links_to child.url }}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+{% end children_of %}
+</code></pre>
+
+<p>This produces the following html:</p>
+
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;&lt;a href="about/"&gt;About us&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about/our-manifesto"&gt;Our manifesto&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about/our-history"&gt;Our history&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2>Filters</h2>
+
+<p>Filters are used to modify the output of Caret. H2o has some built in filters, but here we'll focus on the ones exclusive to Caret.</p>
+
+<h3>Markdown</h3>
+
+<p>Filtering your data through the inbuilt Markdown parser is simple and helps to keep your yaml files HTML free. Filters are added using the pipe symbol ( <strong>|</strong> ), so if we wanted to parse the contents of our <code>{{ page.body }}</code>, we'd do it like this.</p>
+
+<pre><code>{{ page.body | markdown }}
+</code></pre>
+
+<hr><h2>Environment variables</h2>
+
+<p>Caret injects various variables into templates to make your life easier; <code>page</code> which relates to all the data defined in your yaml file for the currently viewed page, and <code>config</code> which contains information about your configuration.</p>
+
+<h3>page</h3>
+
+<p>Contains all the variables pertaining to the current page. Say for example you create a yaml file within pages called about.yaml. Your page might look something like this:</p>
+
+<pre><code>Title: About us
+Template: default
+Body: We are a small company situated in Greater London
+...
+</code></pre>
+
+<p>If I wanted to output the body text, within my template you'd write <code>{{ page.body }}</code>.</p>
+
+<p>Other page variables:</p>
+
+<ul>
+<li>
+<code>{{ page.url }}</code> - The page's url within the site, e.g. <code>http://localhost/caret2/about</code>
+</li>
+</ul><h3>session</h3>
+
+<p>The session variables holds information about the current session:</p>
+
+<ul>
+<li>
+<code>{{ session.url }}</code> - The current url being viewed. This could be used to create 'active' states for navigation</li>
+<li>
+<code>{{ session.segments }}</code> - Returns an array of segments to the current page</li>
+</ul><h3>config</h3>
+
+<p>Caret injects three variables to each template:</p>
+
+<ul>
+<li>
+<code>{{ config.root }}</code> - The base url of the site e.g. http://localhost/caret2/</li>
+<li>
+<code>{{ config.theme_root }}</code> - The base url of the theme e.g. http://localhost/caret2/site/</li>
+</ul><p>These variables are useful for using in your templates to point to other resources, e.g.</p>
+
+<pre><code>&lt;link rel="stylesheet" href="{{ config.theme_root }}assets/css/bootstrap.css"&gt;
+&lt;link rel="stylesheet" href="{{ config.theme_root }}assets/css/style.css"&gt;
+
+…
+
+&lt;a href="{{ config.root }}"&gt;Go home&lt;/a&gt;
+</code></pre>
+
+<hr><h2>About</h2>
+
+<p>Caret is a little project by <a href="http://alasdairmonk.com">Alasdair Monk</a>, it is entirely free of charge for use in personal or commercial projects.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/almonk">almonk</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
