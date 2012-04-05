@@ -33,7 +33,8 @@ class Caret {
 
         // Create the site array globals
         $config = array(
-          'root' => base_url()
+          'root' => base_url(),
+          'theme_root' => base_url() . $theme_folder
         );
 
         $session = array(
@@ -45,9 +46,7 @@ class Caret {
         $h2o = new h2o($theme_folder . 'templates/' . $page['template'] . '.html'); // load the template
 
         // Return the final html
-        return html_entity_decode($h2o->render(compact('page', 'config', 'session')));     
-
-
+        return html_entity_decode($h2o->render(compact('page', 'config', 'session'))); 
     }
 
     public function add_page_url($page_uri){
