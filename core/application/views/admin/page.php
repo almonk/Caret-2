@@ -13,11 +13,11 @@
 	</div>
 
 	<div class="span10">
-		<h1><?=$page['title']?></h1>
+		<h1>Edit page</h1>
 
 		<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
 			<fieldset>
-			<legend>Legend text</legend>
+			<legend><?=$page['title']?></legend>
 			<? foreach ($page as $key => $value):?>
 				<div class="control-group">
 					<label class="control-label"><?=$key?></label>

@@ -1,4 +1,5 @@
 template: default
 title: Homepage2
 body: '## FFFFUUUUU YEAH, it works!Hey goodlooking, you''re running on Caret. Everything looks like it''s running smoothly so get to work making stuff.Love,@almonkxo'
-url: 'http://localhost/caret2/'
+body2: 'Hello test'
+url: 'http://localhost/caret2/history/test/index'
