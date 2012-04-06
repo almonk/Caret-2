@@ -157,6 +157,23 @@ class Caret {
         unset($GLOBALS['pages']);
     }
 
+    public function save_page($page_uri, $array){
+        // Get the controller instance of CodeIgniter
+        $CI =& get_instance();
+
+        // Get the theme folder
+        $theme_folder = $CI->config->item('theme_folder');
+
+        require_once('core/application/third_party/yaml/lib/sfYamlDumper.php');
+        
+        // Instantiate a new Yaml Parser
+        $dumper = new sfYamlDumper();
+
+        $yaml = $dumper->dump($array, 2);
+
+        file_put_contents($theme_folder . 'content/' . base64_decode($page_uri) , $yaml);
+    }
+
     function parse_folder($map, $folder_name, $i){
         $CI =& get_instance();
         $CI->load->helper('directory');

@@ -1,4 +1,4 @@
 template: default
-title: About
-body: |
-    # Hello this is a page test!
+title: 'About us'
+body: '# Hello this is a page test!'
+url: 'http://localhost/caret2/about'

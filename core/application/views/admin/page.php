@@ -14,19 +14,22 @@
 
 	<div class="span10">
 		<h1><?=$page['title']?></h1>
-		
-		<form class="form-horizontal">
+
+		<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
 			<fieldset>
 			<legend>Legend text</legend>
 			<? foreach ($page as $key => $value):?>
 				<div class="control-group">
-					<label class="control-label" for="input01"><?=$key?></label>
-				
+					<label class="control-label"><?=$key?></label>
+					
 					<div class="controls">
-						<input type="text" class="input-xlarge" value="<?=$value?>">
+						<input type="text" class="input-xlarge" name="<?=$key?>" value="<?=$value?>">
 					</div>
 				</div>
 			<? endforeach; ?>
+			<div class="form-actions">
+	            <button type="submit" class="btn btn-primary">Save changes</button>
+			</div>
 			</fieldset>
 		</form>
 	</div>

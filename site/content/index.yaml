@@ -1,11 +1,4 @@
 template: default
-title: Homepage
-body: |
-    ## FFFFUUUUU YEAH, it works!
-
-    Hey goodlooking, you're running on Caret. Everything looks like it's running smoothly so get to work making stuff.
-
-    Love,
-    @almonk
-
-    xo
+title: Welcome
+body: '## FFFFUUUUU YEAH, it works!Hey goodlooking, you''re running on Caret. Everything looks like it''s running smoothly so get to work making stuff.Love,@almonkxo'
+url: 'http://localhost/caret2/'
