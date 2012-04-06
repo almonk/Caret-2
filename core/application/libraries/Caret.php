@@ -97,6 +97,33 @@ class Caret {
         }
     }
 
+    public function parse_page($page_uri){
+        // Get the controller instance of CodeIgniter
+        $CI =& get_instance();
+
+        // Get the theme folder
+        $theme_folder = $CI->config->item('theme_folder');
+        
+        // Load required files
+        $CI->load->spark('markdown/1.2.0');
+        $CI->load->helper('url');
+        $CI->load->helper('directory');
+        require_once('core/application/third_party/h2o-php/h2o.php');
+        require_once('CaretFilters.php');
+        require_once('CaretTags.php');
+        require_once('core/application/third_party/yaml/lib/sfYamlParser.php');
+        
+        // Instantiate a new Yaml Parser
+        $yaml = new sfYamlParser();
+        
+        // Parse the contents of the yaml file into the $page array
+        $page = $yaml->parse(file_get_contents($theme_folder . 'content/' . $page_uri));
+
+        $page['url'] = $this->add_page_url($page_uri);
+
+        return $page;
+    }
+
     public function get_site_map(){
         $CI =& get_instance();
         $CI->load->helper('directory');

@@ -9,18 +9,22 @@ class Admin extends CI_Controller {
     	$data['pages'] = $this->caret->get_site_map();
     	$data['base_url'] = base_url();
 
+    	$this->load->view('admin/header', $data);
 	    $this->load->view('admin/dashboard', $data);
+	    $this->load->view('admin/footer');
     }
     
     public function page($file){
     	$this->load->library('Caret');
     	$this->load->helper('url');
 
-    	echo base64_decode($file);
+        $data['base_url'] = base_url();
+    	$data['page'] = $this->caret->parse_page(base64_decode($file));
+        $data['pages'] = $this->caret->get_site_map();
 
-    	$data['base_url'] = base_url();
-
+    	$this->load->view('admin/header', $data);
 	    $this->load->view('admin/page', $data);
+	    $this->load->view('admin/footer');
     }
 
 }
