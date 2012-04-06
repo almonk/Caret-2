@@ -17,7 +17,6 @@ class Caret {
         $CI->load->spark('markdown/1.2.0');
         $CI->load->helper('url');
         $CI->load->helper('directory');
-        
         require_once('core/application/third_party/h2o-php/h2o.php');
         require_once('CaretFilters.php');
         require_once('CaretTags.php');
@@ -47,6 +46,8 @@ class Caret {
 
         // Return the final html
         return html_entity_decode($h2o->render(compact('page', 'config', 'session'))); 
+
+
     }
 
     public function add_page_url($page_uri){
@@ -78,9 +79,6 @@ class Caret {
         // Get the theme folder
         $theme_folder = $CI->config->item('theme_folder');
 
-        // UGH this function is so gross, but it works
-        // 
-        //
         // Resolves a URI to a file within pages/
         if ($uri == "") { // If uri is blank, assume we mean the homepage
             return "index.yaml"; // Look for the index.yaml datafile
@@ -95,6 +93,65 @@ class Caret {
                     // Throw 404
                     show_404(); 
                 }
+            }
+        }
+    }
+
+    public function get_site_map(){
+        $CI =& get_instance();
+        $CI->load->helper('directory');
+        require_once('core/application/third_party/yaml/lib/sfYamlParser.php');
+        
+        // Instantiate a new Yaml Parser
+        $yaml = new sfYamlParser();
+
+        // Get content folder
+        $theme_folder = $CI->config->item('theme_folder');
+
+        $map = directory_map($theme_folder . 'content');
+
+        $pages = '';
+        $i = 0;
+
+        foreach ($map as $folder => $file) {
+            // Parse the contents of the yaml file into the $page array
+            if (is_string($folder)) {
+                $map = directory_map($theme_folder . 'content/' . $folder);
+                $this->parse_folder($map, $folder, $i);
+
+            }else{
+                $GLOBALS['pages'][$i] = $yaml->parse(file_get_contents($theme_folder . 'content/' . $file));
+                $GLOBALS['pages'][$i]['_caret_filename'] = base64_encode($file);
+                $i++;
+            }
+        }
+
+        return $GLOBALS['pages'];
+        unset($GLOBALS['pages']);
+    }
+
+    function parse_folder($map, $folder_name, $i){
+        $CI =& get_instance();
+        $CI->load->helper('directory');
+        require_once('core/application/third_party/yaml/lib/sfYamlParser.php');
+        
+        // Instantiate a new Yaml Parser
+        $yaml = new sfYamlParser();
+
+        // Get content folder
+        $theme_folder = $CI->config->item('theme_folder');
+
+        $pages = '';
+
+        foreach ($map as $folder => $file) {
+            // Parse the contents of the yaml file into the $page array
+            if (is_string($folder)) {
+                $map = directory_map($theme_folder . 'content/' . $folder_name . '/' . $folder);
+                $this->parse_folder($map, $folder_name . '/' . $folder, $i);
+            }else{
+                $GLOBALS['pages'][$i] = $yaml->parse(file_get_contents($theme_folder . 'content/' . $folder_name . '/' . $file));
+                $GLOBALS['pages'][$i]['_caret_filename'] = base64_encode($folder_name . '/' . $file);
+                $i++;
             }
         }
     }
