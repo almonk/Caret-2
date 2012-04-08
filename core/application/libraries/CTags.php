@@ -4,7 +4,6 @@ class Get_from_Tag extends H2o_Node{
     var $page;
 
     function __construct($argstring, $parser, $pos=0) {
-
         $this->page = $argstring;
         $this->body = $parser->parse('end get_from');
         $options = $parser->options;
@@ -13,14 +12,10 @@ class Get_from_Tag extends H2o_Node{
     function render($context, $stream){
         // Get the controller instance of CodeIgniter
         $CI =& get_instance();
-
-        // Get the theme folder
-        $theme_folder = $CI->config->item('theme_folder');
-
-        $yaml = new sfYamlParser();
+        $cpage = new CPage();
        
         // Parse the contents of the yaml file into the $page array
-        $page = $yaml->parse(file_get_contents($theme_folder . 'content/' . $this->page . '.yaml'));
+        $page = $cpage->parse($this->page . '.yaml');
 
         $output = new StreamWriter;
        
@@ -44,7 +39,7 @@ class Children_of_Tag extends H2o_Node{
     function render($context, $stream){
         // Get the controller instance of CodeIgniter
         $CI =& get_instance();
-        $Caret = new Caret();
+        $cpage = new CPage();
 
         // Get the theme folder
         $theme_folder = $CI->config->item('theme_folder');
@@ -69,14 +64,11 @@ class Children_of_Tag extends H2o_Node{
         foreach ($children as $child) {
             // If child contains yaml, we know it's a page and not a folder
             if (strpos($child, '.yaml')) {
-                $page[$i] = $yaml->parse(file_get_contents($theme_folder . 'content/' . $this->page . '/' . $child));
-
-                $page[$i]['url'] = $Caret->add_page_url($this->page . '/' . $child);
-
-                // Increase the counter
+                $page[$i] = $cpage->parse($this->page . '/' . $child);
                 $i++;
             }
         }
+        
         $output = new StreamWriter;
        
         $context->set('children', $page);

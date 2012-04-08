@@ -1,1 +1,7 @@
 {{ page.body | markdown }}
+
+{% children_of %}
+	{% for child in children %}
+	    {{ child.title | links_to child.url }}
+	{% endfor %}
+{% end children_of %}

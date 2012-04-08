@@ -8,4 +8,18 @@
 	</style>
 </head>
 <body>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul class="nav">
+					<li>
+						<a href="#">Pages</a>
+					</li>
+					<li>
+						<a href="#">Log out</a>
+					</li>	
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid">

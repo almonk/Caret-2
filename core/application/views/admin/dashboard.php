@@ -1,4 +1,4 @@
-<div class="row-fluid" style="padding-top:20px;">
+<div class="row-fluid">
     <div class="span2">
     	<ul class="nav nav-tabs nav-stacked">
 			<? foreach ($pages as $page_item): ?>

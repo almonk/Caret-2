@@ -1,4 +1,4 @@
 template: default
-title: Welcome
-body: '## FFFFUUUUU YEAH, it works!Hey goodlooking, you''re running on Caret. Everything looks like it''s running smoothly so get to work making stuff.Love,@almonkxo'
+title: Homepage
+body: "## FFFFUUUUU YEAH, it works!\n\nHey goodlooking, you're running on Caret. Everything looks like it's running smoothly so get to work making stuff.\n\nLove,@almonk\n\nxo"
 url: 'http://localhost/caret2/'
