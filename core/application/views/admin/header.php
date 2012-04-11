@@ -16,6 +16,9 @@
 						<a href="<?=$base_url . 'admin'?>">Pages</a>
 					</li>
 					<li>
+						<a href="<?=$base_url . 'admin/templates'?>">Templates</a>
+					</li>
+					<li>
 						<a href="#">Log out</a>
 					</li>	
 				</ul>

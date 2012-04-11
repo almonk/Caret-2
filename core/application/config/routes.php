@@ -5,6 +5,8 @@ $route['default_controller'] = "page";
 if ($this->config->item('admin_enabled')) {
 	$route['admin'] = "admin";
 	$route['admin/page/(:any)'] = "admin/page/$1";
+	$route['admin/templates']	= "admin/templates";
+	$route['admin/template/(:any)']	= "admin/template/$1";
 	$route['admin/save/(:any)'] = "admin/save/$1";
 }
 

@@ -30,4 +30,29 @@ class Admin extends CI_Controller {
         redirect('admin/page/' . base64_decode($page_uri));
     }
 
+    public function templates(){
+        $theme_folder = $this->config->item('theme_folder');
+        $data['base_url'] = base_url();
+
+        $data['templates'] = directory_map(APPPATH . '../../' . $theme_folder . '/templates');
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/templates', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function template($file){
+        $theme_folder = $this->config->item('theme_folder');
+        $this->load->helper('form');
+        $this->load->helper('file');
+
+        $data['title'] = base64_decode($file);
+        $data['content'] = read_file(APPPATH . '../../' . $theme_folder . '/templates/' . $data['title']);
+        $data['base_url'] = base_url();
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/template', $data);
+        $this->load->view('admin/footer');
+    }
+
 }
