@@ -1,25 +1,10 @@
 <div class="row-fluid">
-    <div class="span2">
-    	<ul class="nav nav-tabs nav-stacked">
-			<? foreach ($pages as $page_item): ?>
-				<li>
-					<a href="<?=$base_url . 'admin/page/' . $page_item['_caret_filename']?>">
-						<?=$page_item['title']?><br/>
-						<span style="color:gray;font-size:11px;"><?=base64_decode($page_item['_caret_filename'])?></span>
-					</a>
-				</li>
-			<? endforeach ?>
-		</ul>
-	</div>
-
-	<div class="span10">
+	<div class="span9">
 		<? if($this->session->flashdata('success')):?>
 			<div class="alert alert-success">
 				<?=$this->session->flashdata('success');?>
 			</div>
 		<? endif ?>
-
-		<h1>Edit page</h1>
 
 		<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
 			<fieldset>
@@ -41,6 +26,10 @@
 			</div>
 			</fieldset>
 		</form>
+	</div>
+
+	<div class="span3">
+		<a href="<?=$page['url']?>" class="btn" target="_blank">View page</a>
 	</div>
 
 </div>

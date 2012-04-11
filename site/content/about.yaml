@@ -1,5 +1,5 @@
 template: default
-title: About
+title: 'About us'
 body: "# Hello this is a page test LOL!\n\nWhat else is new?"
 url: 'http://localhost/caret2/about'
 features: Array

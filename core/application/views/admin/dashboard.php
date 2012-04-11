@@ -1,5 +1,9 @@
 <div class="row-fluid">
-    <div class="span2">
+    <div class="span12">
+
+		<h1>Pages</h1>
+		<br/>
+
     	<ul class="nav nav-tabs nav-stacked">
 			<? foreach ($pages as $page_item): ?>
 				<li>
@@ -11,9 +15,4 @@
 			<? endforeach ?>
 		</ul>
 	</div>
-
-	<div class="span10">
-		<h1>Dashboard</h1>
-	</div>
-
 </div>

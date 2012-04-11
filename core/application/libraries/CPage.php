@@ -101,8 +101,14 @@ class CPage {
 
             $page_array['url'] = $base_url . $page_array['url'][0]; // Grab first element of exploded array
 
+            // Turn trailing index into /
             if (substr($page_array['url'], -5) == 'index') {
                 $page_array['url'] = str_replace('index', '',  $page_array['url']);
+            }
+
+            if (substr($page_array['url'], -1) == '/') {
+                $length = strlen($page_array['url']);
+                $page_array['url'] = substr($page_array['url'], 0 , $length -1);
             }
 
             return $page_array['url'];

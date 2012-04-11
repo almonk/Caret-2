@@ -13,7 +13,7 @@
 			<div class="container">
 				<ul class="nav">
 					<li>
-						<a href="#">Pages</a>
+						<a href="<?=$base_url . 'admin'?>">Pages</a>
 					</li>
 					<li>
 						<a href="#">Log out</a>
