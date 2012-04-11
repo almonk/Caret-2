@@ -26,3 +26,10 @@
 		</div>
 	</div>
 	<div class="container-fluid">
+		<div class="row-fluid">
+		<? if($this->session->flashdata('success')):?>
+			<div class="alert alert-success">
+				<?=$this->session->flashdata('success');?>
+			</div>
+		<? endif ?>
+		</div>

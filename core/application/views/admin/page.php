@@ -1,10 +1,5 @@
 <div class="row-fluid">
 	<div class="span12">
-		<? if($this->session->flashdata('success')):?>
-			<div class="alert alert-success">
-				<?=$this->session->flashdata('success');?>
-			</div>
-		<? endif ?>
 		<h1><?=$page['title']?></h1>
 		<br/>
 	</div>
