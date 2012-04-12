@@ -1,12 +1,11 @@
-<div class="row-fluid">
-	<div class="span12">
-		<h1><?=$title?></h1>
-		<br/>
+<div class="row">
+	<div class="six columns">
+		<h4><?=$title?></h4>
 	</div>
 </div>
 
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="eight columns">
 
 		<?=form_open('admin/save_template/' . base64_encode($this->uri->segment(3) )) ?>
 			<fieldset class="well">

@@ -1,11 +1,10 @@
-<div class="row-fluid">
-    <div class="span12 page">
+<div class="row">
+    <div class="twelve columns">
 
-		<h1>Pages</h1>
-		<br/>
+		<h4>Pages</h4>
 		<?
 		$attr = array(
-	        'class' => '',
+	        'class' => 'tree',
         );
 		?>
 

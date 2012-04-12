@@ -2,4 +2,4 @@ template: default
 title: 'About us'
 body: 'What else is new?'
 features: Array
-url: 'http://localhost/caret2/about'
+url: 'http://127.0.0.1/caret2/about'

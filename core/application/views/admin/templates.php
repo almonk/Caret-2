@@ -1,10 +1,8 @@
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="twelve columns">
+		<h4>Templates</h4>
 
-		<h1>Templates</h1>
-		<br/>
-
-    	<ul class="nav nav-tabs nav-stacked">
+    	<ul>
 			<? foreach ($templates as $template): ?>
 				<li>
 					<a href="<?=$base_url . 'admin/template/' . base64_encode($template)?>">

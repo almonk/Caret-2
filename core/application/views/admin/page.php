@@ -1,36 +1,29 @@
-<div class="row-fluid">
-	<div class="span12">
-		<h1><?=$page['title']?></h1>
-		<br/>
+<div class="row">
+	<div class="six columns">
+		<h4><?=$page['title']?></h4>
+		<p><?=$page['url']?> <a href="<?=$page['url']?>" class="btn" target="_blank">view</a></p>
 	</div>
 </div>
 
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="eight columns">
 
 		<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
-			<fieldset class="well">
 			<? foreach ($page as $key => $value):?>
-				<div class="control-group">
 					<label class="control-label"><?=$key?></label>						
-					<div class="controls">
 						<?php if ($key == 'body'): ?>
-							<textarea class="input-xlarge span9" style="height:250px;" name="<?=$key?>"><?=$value?></textarea>
+							<textarea style="height:250px;" class="expand input-text" name="<?=$key?>"><?=$value?></textarea>
 						<?php else: ?>	
-							<input type="text" class="input-xlarge" name="<?=$key?>" value="<?=$value?>">
-						<? endif ?>						
-					</div>
-				</div>
+							<input type="text" class="large input-text" name="<?=$key?>" value="<?=$value?>">
+						<? endif ?>
 			<? endforeach; ?>
-			<div class="form-actions">
-	            <button type="submit" class="btn btn-primary span">Save changes</button>
-			</div>
-			</fieldset>
+		
+	</div>
+
+	<div class="four columns">
+		<input type="submit" value="Save changes"/>
 		</form>
 	</div>
 
-	<div class="span3">
-		<a href="<?=$page['url']?>" class="btn" target="_blank">View page</a>
-	</div>
 
 </div>

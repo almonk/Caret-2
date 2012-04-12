@@ -9,10 +9,6 @@ class Caret {
     public function get_site_map(){
         $CI =& get_instance();
         $CI->load->helper('caret_directory');
-        require_once(APPPATH . 'third_party/yaml/lib/sfYamlParser.php');
-        
-        // Instantiate a new Yaml Parser
-        $yaml = new sfYamlParser();
 
         // Get content folder
         $theme_folder = $CI->config->item('theme_folder');

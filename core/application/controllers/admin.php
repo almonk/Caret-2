@@ -3,13 +3,38 @@
 class Admin extends CI_Controller {
     
     public function index(){
-        $this->load->helper('html');
-    	$data['pages'] = $this->caret->get_site_map();
-    	$data['base_url'] = base_url();
+        if ($this->session->userdata('logged_in') == true) {
+            $this->load->helper('html');
+        	$data['pages'] = $this->caret->get_site_map();
+        	$data['base_url'] = base_url();
 
-    	$this->load->view('admin/header', $data);
-	    $this->load->view('admin/dashboard', $data);
-	    $this->load->view('admin/footer');
+        	$this->load->view('admin/header', $data);
+    	    $this->load->view('admin/dashboard', $data);
+    	    $this->load->view('admin/footer');
+        }else{
+            redirect('admin/login');
+        }
+    }
+
+    public function login(){
+        $this->load->helper('form');
+        $data['base_url'] = base_url();
+        $this->load->view('admin/login', $data);
+    }
+
+    public function do_login(){
+        if ($this->input->post('password') == $this->config->item('admin_password')) {
+            $this->session->set_userdata('logged_in', true);
+            redirect('admin');
+        }else{
+            $this->session->set_flashdata('fail', '<b>Incorrect password</b>');
+            redirect('admin/login');
+        }
+    }
+
+    public function logout(){
+        $this->session->unset_userdata('logged_in');
+        redirect(base_url());
     }
     
     public function page($file){
