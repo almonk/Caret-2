@@ -3,6 +3,7 @@
 <head>
 	<meta charset=utf-8 />
 	<title>Caret</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<style>
 		<? require('bootstrap.css') ?>
 	</style>

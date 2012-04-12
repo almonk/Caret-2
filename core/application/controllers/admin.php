@@ -3,6 +3,7 @@
 class Admin extends CI_Controller {
     
     public function index(){
+        $this->load->helper('html');
     	$data['pages'] = $this->caret->get_site_map();
     	$data['base_url'] = base_url();
 
@@ -53,6 +54,18 @@ class Admin extends CI_Controller {
         $this->load->view('admin/header', $data);
         $this->load->view('admin/template', $data);
         $this->load->view('admin/footer');
+    }
+
+    public function save_template($file){
+        $theme_folder = $this->config->item('theme_folder');
+
+        $file = base64_decode($file);
+        $contents = $this->input->post('content');
+
+        file_put_contents($theme_folder . 'templates/' . base64_decode($file), $contents);
+
+        $this->session->set_flashdata('success', '<b>Template saved</b>');
+        redirect('admin/template/' . $file);
     }
 
 }

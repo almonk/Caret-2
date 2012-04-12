@@ -2,4 +2,7 @@
 
 {% block main %}
 	{{ page.body | markdown }}
+
+	{{ page.image1 | image_tag }}
+	{{ page.image1 | script_tag }}
 {% endblock %}

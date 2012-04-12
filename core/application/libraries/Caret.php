@@ -8,7 +8,7 @@ class Caret {
 
     public function get_site_map(){
         $CI =& get_instance();
-        $CI->load->helper('directory');
+        $CI->load->helper('caret_directory');
         require_once(APPPATH . 'third_party/yaml/lib/sfYamlParser.php');
         
         // Instantiate a new Yaml Parser
@@ -17,26 +17,8 @@ class Caret {
         // Get content folder
         $theme_folder = $CI->config->item('theme_folder');
 
-        $map = directory_map($theme_folder . 'content');
-
-        $pages = '';
-        $i = 0;
-
-        foreach ($map as $folder => $file) {
-            // Parse the contents of the yaml file into the $page array
-            if (is_string($folder)) {
-                $map = directory_map($theme_folder . 'content/' . $folder);
-                $this->parse_folder($map, $folder, $i);
-
-            }else{
-                $GLOBALS['pages'][$i] = $yaml->parse(file_get_contents($theme_folder . 'content/' . $file));
-                $GLOBALS['pages'][$i]['_caret_filename'] = base64_encode($file);
-                $i++;
-            }
-        }
-
-        return $GLOBALS['pages'];
-        unset($GLOBALS['pages']);
+        $map = caret_directory_map($theme_folder . 'content');
+        return $map;
     }
 
     public function save_page($page_uri, $array){
@@ -54,32 +36,6 @@ class Caret {
         $yaml = $dumper->dump($array, 2);
 
         file_put_contents($theme_folder . 'content/' . base64_decode($page_uri) , $yaml);
-    }
-
-    function parse_folder($map, $folder_name, $i){
-        $CI =& get_instance();
-        $CI->load->helper('directory');
-        require_once(APPPATH . 'third_party/yaml/lib/sfYamlParser.php');
-
-        // Instantiate a new Yaml Parser
-        $yaml = new sfYamlParser();
-
-        // Get content folder
-        $theme_folder = $CI->config->item('theme_folder');
-
-        $pages = '';
-
-        foreach ($map as $folder => $file) {
-            // Parse the contents of the yaml file into the $page array
-            if (is_string($folder)) {
-                $map = directory_map($theme_folder . 'content/' . $folder_name . '/' . $folder);
-                $this->parse_folder($map, $folder_name . '/' . $folder, $i);
-            }else{
-                $GLOBALS['pages'][$i] = $yaml->parse(file_get_contents($theme_folder . 'content/' . $folder_name . '/' . $file));
-                $GLOBALS['pages'][$i]['_caret_filename'] = base64_encode($folder_name . '/' . $file);
-                $i++;
-            }
-        }
     }
 
 }

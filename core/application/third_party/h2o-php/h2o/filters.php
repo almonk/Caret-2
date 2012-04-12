@@ -200,24 +200,41 @@ class NumberFilters extends FilterCollection {
 
 class HtmlFilters extends FilterCollection {
     static function base_url($url, $options = array()) {
-        return $url;
+        $CI =& get_instance();
+        return base_url();
     }
     
     static function asset_url($url, $options = array()) {
         return self::base_url($url, $options);
     }
+
+    public function get_caret_url(){
+        $CI =& get_instance();
+        $theme_folder = $CI->config->item('theme_folder');
+        $url = base_url() . $theme_folder;
+
+        return $url;
+    }
     
     static function image_tag($url, $options = array()) {
         $attr = self::htmlAttribute(array('alt','width','height','border'), $options);
+
+        $url = self::get_caret_url() . 'assets/img/' . $url;
+
         return sprintf('<img src="%s" %s/>', $url, $attr);
     }
 
     static function css_tag($url, $options = array()) {
         $attr = self::htmlAttribute(array('media'), $options);
+
+        $url = self::get_caret_url() . 'assets/css/' . $url;
+
         return sprintf('<link rel="stylesheet" href="%s" type="text/css" %s />', $url, $attr);
     }
 
     static function script_tag($url, $options = array()) {
+        $url = self::get_caret_url() . 'assets/js/' . $url;
+
         return sprintf('<script src="%s" type="text/javascript"></script>', $url);
     }
     
