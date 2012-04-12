@@ -23,7 +23,8 @@ class CPage {
 
         $session = array(
             'segments' => $CI->uri->segment_array(),
-            'url' => current_url()
+            'url' => current_url(),
+            'is_ajax' => $CI->input->is_ajax_request()
         );
         
         // Load the template using the yaml key 'template'
