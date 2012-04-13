@@ -1,15 +1,25 @@
 <div class="row">
-    <div class="twelve columns">
+    <div class="eight columns">
 		<h4>Templates</h4>
+		<br/>
 
-    	<ul>
+    	<table style="width:100%">
+    		<thead>
+	    		<tr>
+		    		<th>
+		    			Filename
+		    		</th>
+		    	</tr>
+		    </thead>
 			<? foreach ($templates as $template): ?>
-				<li>
-					<a href="<?=$base_url . 'admin/template/' . base64_encode($template)?>">
-						<?=$template?>
-					</a>
-				</li>
+				<tr>
+					<td>
+						<a href="<?=$base_url . 'admin/template/' . base64_encode($template)?>">
+							<?=$template?>
+						</a>
+					</td>
+				</tr>
 			<? endforeach ?>
-		</ul>
+		</table>
 	</div>
 </div>
