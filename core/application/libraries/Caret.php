@@ -64,4 +64,11 @@ class Caret {
             return 'text';
         }        
     }
+
+    public function pretty_key($key){
+        $key = ucwords($key);
+        $key = str_replace("_", " ", $key);
+        $key = str_replace("-", " ", $key);
+        return $key;
+    }
 }

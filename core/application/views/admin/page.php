@@ -1,4 +1,4 @@
-<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
+<?=form_open_multipart('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
 <div class="row">
 	<div class="six columns">
 		<h4><?=$page['title']?></h4>
@@ -16,13 +16,17 @@
 				<? $field = $this->caret->get_field_type($key)?>	
 
 				<? if ($field == 'textarea'): ?>
-					<label><?=$key?></label>	
+					<label><?=$this->caret->pretty_key($key)?></label>	
 					<textarea style="height:250px;" class="expand input-text" name="<?=$key?>"><?=$value?></textarea>
 				<? elseif ($field == 'text'): ?>	
-					<label><?=$key?></label>
+					<label><?=$this->caret->pretty_key($key)?></label>	
 					<input type="text" class="large input-text" name="<?=$key?>" value="<?=$value?>">
 				<? elseif ($field == 'hidden'): ?>
 					<input type="hidden" name="<?=$key?>" value="<?=$value?>"/>
+				<? elseif ($field == 'image'): ?>
+					<label><?=$this->caret->pretty_key($key)?></label>	
+					<p><?=$value?></p>
+					<?=form_upload($key,$value)?>
 				<? endif ?>
 
 			<? endforeach; ?>

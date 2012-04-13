@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>core/assets/css/admin.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container header">
 		<div class="row">
 			<div class="twelve columns">
 				<ul class="nav-bar">
@@ -28,12 +28,18 @@
 				</ul>
 			</div>
 		</div>
-
+	</div>
+	<div class="container">
 		<div class="row">
-			<div class="twelve columns">
+			<div class="twelve columns" style="margin-top:-20px;">
 			<? if($this->session->flashdata('success')):?>
 				<div class="alert-box success">
 					<?=$this->session->flashdata('success');?>
+				</div>
+			<? endif ?>
+			<? if($this->session->flashdata('fail')):?>
+				<div class="alert-box error">
+					<?=$this->session->flashdata('fail');?>
 				</div>
 			<? endif ?>
 			</div>

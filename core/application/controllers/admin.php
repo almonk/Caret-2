@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
 
     public function save($page_uri){
         $this->caret->save_page(base64_decode($page_uri), $this->input->post());
-        $this->session->set_flashdata('success', '<b>Page saved</b>');
+        $this->session->set_flashdata('success', '<b>Page updated</b>');
         
         redirect('admin/page/' . base64_decode($page_uri));
     }
