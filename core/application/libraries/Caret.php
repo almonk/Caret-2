@@ -23,6 +23,23 @@ class Caret {
 
         // Get the theme folder
         $theme_folder = $CI->config->item('theme_folder');
+        $config['upload_path'] = FCPATH . $theme_folder . 'assets/img/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '100';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $CI->load->library('upload', $config);
+
+        if ( ! $CI->upload->do_upload('image1'))
+        {
+            $error = array('error' => $CI->upload->display_errors());
+            print_r($error);
+        }
+        else
+        {
+
+        }
 
         require_once(APPPATH . 'third_party/yaml/lib/sfYamlDumper.php');
 
