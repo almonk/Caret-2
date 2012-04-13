@@ -1,5 +1,5 @@
 title: 'About us'
 template: default
-body: 'What else is new?'
-body2: Hello
-headline1: Test
+body: "# Headline\n\nThis is a test"
+body2: "This is another text field with markdown parsing it.\n\n- So\n- this\n- is\n- a\n- list"
+image1: Screen-Shot-2012-04-12-at-16.17_.jpg

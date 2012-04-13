@@ -7,6 +7,8 @@ if ($this->config->item('admin_enabled')) {
 	$route['admin/login'] = "admin/login";
 	$route['admin/do_login'] = "admin/do_login";
 	$route['admin/logout'] = "admin/logout";
+	$route['admin/assets'] = "admin/assets";
+	$route['admin/asset/upload'] = "admin/upload_asset";
 	$route['admin/page/(:any)'] = "admin/page/$1";
 	$route['admin/templates']	= "admin/templates";
 	$route['admin/template/(:any)']	= "admin/template/$1";

@@ -53,7 +53,36 @@ class Admin extends CI_Controller {
         $this->caret->save_page(base64_decode($page_uri), $this->input->post());
         $this->session->set_flashdata('success', '<b>Page updated</b>');
         
-        //redirect('admin/page/' . base64_decode($page_uri));
+        redirect('admin/page/' . base64_decode($page_uri));
+    }
+
+    public function assets(){
+        $this->load->helper('form');
+
+        $data['base_url'] = base_url();
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/assets', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function upload_asset(){
+        $theme_folder = $this->config->item('theme_folder');
+
+        $config['upload_path'] = FCPATH . $theme_folder . 'assets/img/';
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('userfile')){
+            $this->session->set_flashdata('fail', '<b>Error uploading file</b>');
+            redirect('admin/assets/');
+            print_r($error);
+        }else{
+            $this->session->set_flashdata('success', '<b>File uploaded</b>');
+            redirect('admin/assets/');
+        }
+
     }
 
     public function templates(){

@@ -20,6 +20,9 @@
 						<a class="main" href="<?=$base_url . 'admin'?>">Pages</a>
 					</li>
 					<li>
+						<a class="main" href="<?=$base_url . 'admin/assets'?>">Assets</a>
+					</li>
+					<li>
 						<a class="main" href="<?=$base_url . 'admin/templates'?>">Templates</a>
 					</li>
 					<li>

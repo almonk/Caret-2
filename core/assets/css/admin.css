@@ -17,15 +17,19 @@ ul.nav-bar {
   background-color: #2D2D2D;
   border: 0px;
   margin-bottom: 0px;
-  margin-top: 0px; }
+  margin-top: 0px;
+  height: 30px; }
   ul.nav-bar li {
-    border: 0px; }
+    border: 0px;
+    line-height: auto!important;
+    height: 28px!important; }
     ul.nav-bar li a {
       font-size: 13px!important;
       color: #fff;
       padding-left: 0px!important;
-      padding-right: 40px!important;
-      height: 22px; }
+      padding-right: 30px!important;
+      height: 30px;
+      line-height: 28px; }
 
 ul.tree {
   padding: 0px;

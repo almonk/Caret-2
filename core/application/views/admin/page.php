@@ -1,4 +1,4 @@
-<?=form_open_multipart('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
+<?=form_open('admin/save/' . base64_encode($this->uri->segment(3) )) ?>
 <div class="row">
 	<div class="six columns">
 		<h4><?=$page['title']?></h4>
@@ -25,8 +25,7 @@
 					<input type="hidden" name="<?=$key?>" value="<?=$value?>"/>
 				<? elseif ($field == 'image'): ?>
 					<label><?=$this->caret->pretty_key($key)?></label>	
-					<p><?=$value?></p>
-					<?=form_upload($key,$value)?>
+					<?=form_dropdown($key,$this->caret->get_assets(),$value)?>
 				<? endif ?>
 
 			<? endforeach; ?>
