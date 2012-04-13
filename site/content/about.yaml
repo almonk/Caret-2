@@ -1,5 +1,0 @@
-title: 'About us'
-template: default
-body: "# Headline\n\nThis is a test"
-body2: "This is another text field with markdown parsing it.\n\n- So\n- this\n- is\n- a\n- list"
-image1: batman_logo.gif
