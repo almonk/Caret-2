@@ -50,6 +50,14 @@ class Caret {
         return $allfiles;
     }
 
+    public function get_asset_url($url){
+        $CI =& get_instance();
+        $theme_folder = $CI->config->item('theme_folder');
+
+        $url = base_url() . $theme_folder . 'assets/img/' . $url;
+        return $url;
+    }
+
     public function get_field_type($key){
         // Get the controller instance of CodeIgniter
         $CI =& get_instance();

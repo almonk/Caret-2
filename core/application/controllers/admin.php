@@ -59,6 +59,8 @@ class Admin extends CI_Controller {
     public function assets(){
         $this->load->helper('form');
 
+        $data['assets'] = $this->caret->get_assets();
+
         $data['base_url'] = base_url();
 
         $this->load->view('admin/header', $data);
@@ -70,7 +72,7 @@ class Admin extends CI_Controller {
         $theme_folder = $this->config->item('theme_folder');
 
         $config['upload_path'] = FCPATH . $theme_folder . 'assets/img/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
 
         $this->load->library('upload', $config);
 
