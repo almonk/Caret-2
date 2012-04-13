@@ -4,7 +4,11 @@
 	<meta charset=utf-8 />
 	<title>Caret</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>core/assets/js/codemirror.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>core/assets/js/util/yaml.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>core/assets/js/util/simple-hint.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>core/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>core/assets/css/codemirror.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>core/assets/css/admin.css">
 </head>
 <body>

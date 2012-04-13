@@ -1,5 +1,22 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 body {
   background-color: #fff; }
+
+ul.nav-bar {
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #2D2D2D;
+  border: 0px;
+  margin-top: 0px; }
+  ul.nav-bar li {
+    border: 0px; }
+    ul.nav-bar li a {
+      font-size: 13px!important;
+      color: #fff; }
 
 ul.tree {
   padding: 0px;
