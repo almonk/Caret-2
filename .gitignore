@@ -1,1 +1,8 @@
 site/
+site/content/about.yaml
+
+site/content/index.yaml
+
+site/templates/default.html
+
+site/templates/layout.html
