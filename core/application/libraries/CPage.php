@@ -26,6 +26,11 @@ class CPage {
             'url' => current_url(),
             'is_ajax' => $CI->input->is_ajax_request()
         );
+
+        if ($page['template'] == null) {
+            echo 'No template defined for page';
+            die;
+        }
         
         // Load the template using the yaml key 'template'
         $h2o = new h2o($theme_folder . 'templates/' . $page['template'] . '.html'); // load the template

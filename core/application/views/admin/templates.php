@@ -1,6 +1,6 @@
 <div class="row">
     <div class="eight columns">
-		<h4>Templates</h4>
+		<h3>Templates</h3>
 		<br/>
 
     	<table style="width:100%">

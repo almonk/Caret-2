@@ -17,6 +17,14 @@ class Caret {
         return $map;
     }
 
+    public function get_site_url(){
+        $CI =& get_instance();
+        $theme_folder = $CI->config->item('theme_folder');
+        $url = base_url() . $theme_folder;
+
+        return $url;
+    }
+
     public function save_page($page_uri, $array){
         // Get the controller instance of CodeIgniter
         $CI =& get_instance();

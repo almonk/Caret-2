@@ -217,11 +217,14 @@ class HtmlFilters extends FilterCollection {
     }
     
     static function image_tag($url, $options = array()) {
-        $attr = self::htmlAttribute(array('alt','width','height','border'), $options);
+        $attr = self::htmlAttribute(array('alt','width','height','border','crop', 'resize'), $options);
 
-        $url = self::get_caret_url() . 'assets/img/' . $url;
-
-        return sprintf('<img src="%s" %s/>', $url, $attr);
+        if ($options['resize']) {
+            // Use phpThumb
+        }else{
+            $url = self::get_caret_url() . 'assets/img/' . $url;
+            return sprintf('<img src="%s" %s/>', $url, $attr);
+        }
     }
 
     static function css_tag($url, $options = array()) {

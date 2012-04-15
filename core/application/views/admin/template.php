@@ -1,12 +1,13 @@
 <?=form_open('admin/save_template/' . base64_encode($this->uri->segment(3) )) ?>
 <div class="row">
 	<div class="eight columns">
-		<h4><?=$title?></h4>
+		<h3><?=$title?></h3>
 		<br/>
 	</div>
 
 	<div class="four columns" style="text-align:right;">
-		<input type="submit" value="Save changes"/>
+		<input type="submit" value="Save changes" style="display:none;"/>
+		<a href="#" class="button black submit">Save template</a>
 	</div>
 </div>
 

@@ -1,7 +1,7 @@
 <?=form_open_multipart('admin/asset/upload') ?>
 <div class="row">
 	<div class="twelve columns">
-		<h4>Assets</h4>
+		<h3>Assets</h3>
 		<br/>
 	</div>
 </div>

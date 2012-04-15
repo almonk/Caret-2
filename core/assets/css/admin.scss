@@ -3,13 +3,20 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+html,body{
+	background-color: #262928;
+}
 
-body{
-	background-color:#fff;
+.page{
+	background-color: #fff;
+	width: 980px;
+	margin: 0 auto;
+	padding: 20px;
+	min-height: 400px
 }
 
 .container.header{
-	background-color: #2D2D2D;
+	background-color: rgba(0,0,0,0.3);
 	padding: 0px!important;
 	margin-bottom: 30px;
 }
@@ -17,7 +24,7 @@ body{
 ul.nav-bar{
 	font-size: 13px;
 	font-weight: bold;
-	background-color: #2D2D2D;
+	background:transparent;
 	border:0px;
 	margin-bottom: 0px;
 	margin-top:0px;
@@ -43,10 +50,48 @@ ul.tree{
 	li{
 		padding: 0px;
 		margin: 0px;
+		span,a{
+			border:1px solid #ccc;
+			display: block;
+			width: 100%;
+			padding: 5px;
+			margin-bottom: 3px;
+		}
 		ul{
 			padding: 0px;
 			margin: 0px;
 			margin-left: 20px;
 		}
 	}
+}
+
+.form{
+	p{
+		border-bottom: 1px dotted #ccc;
+		margin-bottom: 0px;
+		padding-top: 10px;
+		padding-bottom: 7px;
+	}
+	label{
+		font-weight: bold;
+		padding-bottom: 4px;
+		color: #353535;
+	}
+	.input-text{
+		border:1px solid #ccc;
+		padding: 6px;
+		font-family: arial, sans-serif;
+	}
+}
+
+h4{
+	margin-bottom: 10px;
+}
+
+.panel{
+	background: #F6F6F6;
+}
+
+a.button{
+	background-color: #FF5870
 }
