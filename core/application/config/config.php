@@ -28,7 +28,7 @@ $config['base_url']	= '';
 |	site/
 |
 */
-$config['theme_folder']	= 'site/';
+$config['theme_folder']	= 'site-default/';
 
 
 /*

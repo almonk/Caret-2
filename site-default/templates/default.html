@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title>{{ page.title }}</title>
+</head>
+<body>
+	{{ page.featured_image | image_tag }}
+	
+	{{ page.body | markdown }}
+</body>
+</html>

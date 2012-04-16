@@ -1,0 +1,13 @@
+# Fields file
+# ===========
+
+# This is the file Caret uses to decide how fields should be rendered in the admin ui.
+# Caret matches the keys from your content files to various fields, for example:
+# title: text
+# body: textarea
+# featured_image: image
+
+body: textarea
+image1: image
+intro_paragraph: textarea
+featured_image: image

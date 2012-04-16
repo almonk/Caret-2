@@ -35,6 +35,7 @@
 			<p>Caret only accepts jpgs, png, gif files at a maximum of 3MB</p>
 	    	<?=form_upload('userfile','')?>
 			<?=form_submit('upload','Upload')?>
+			<br/><br/>
 		</div>
 	</div>
 </div>

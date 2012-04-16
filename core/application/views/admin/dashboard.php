@@ -1,13 +1,10 @@
 <div class="row">
-    <div class="twelve columns">
+    <div class="eight columns">
 
 		<h3>Pages</h3>
-		<?
-		$attr = array(
-	        'class' => 'tree',
-        );
-		?>
 
+		<br/>
 		<?=caret_site_map_ul($pages, $attr)?>
+
 	</div>
 </div>

@@ -38,6 +38,9 @@ class Admin extends CI_Controller {
     }
     
     public function page($file){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $this->load->helper('form');
 
         $data['base_url'] = base_url();
@@ -50,6 +53,9 @@ class Admin extends CI_Controller {
     }
 
     public function save($page_uri){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $this->caret->save_page(base64_decode($page_uri), $this->input->post());
         $this->session->set_flashdata('success', '<b>Page updated</b>');
         
@@ -57,6 +63,9 @@ class Admin extends CI_Controller {
     }
 
     public function assets(){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $this->load->helper('form');
 
         $data['assets'] = $this->caret->get_assets();
@@ -69,6 +78,9 @@ class Admin extends CI_Controller {
     }
 
     public function upload_asset(){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $theme_folder = $this->config->item('theme_folder');
 
         $config['upload_path'] = FCPATH . $theme_folder . 'assets/img/';
@@ -88,6 +100,9 @@ class Admin extends CI_Controller {
     }
 
     public function templates(){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $theme_folder = $this->config->item('theme_folder');
         $data['base_url'] = base_url();
 
@@ -99,6 +114,9 @@ class Admin extends CI_Controller {
     }
 
     public function template($file){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+
         $theme_folder = $this->config->item('theme_folder');
         $this->load->helper('form');
         $this->load->helper('file');
@@ -113,6 +131,9 @@ class Admin extends CI_Controller {
     }
 
     public function save_template($file){
+        // Protect function
+        if ($this->session->userdata('logged_in') != true) { redirect('admin/login'); };
+        
         $theme_folder = $this->config->item('theme_folder');
 
         $file = base64_decode($file);
