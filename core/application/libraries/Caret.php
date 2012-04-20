@@ -85,6 +85,10 @@ class Caret {
             return 'hidden';
         }
 
+        if ($key == 'repeatable') {
+            return 'array';
+        }
+
         // Find the field to render for this key
         if ($fields[$key]!='') {
             return $fields[$key];

@@ -54,4 +54,3 @@
 			<? endif ?>
 			</div>
 		</div>
-		<div class="page">

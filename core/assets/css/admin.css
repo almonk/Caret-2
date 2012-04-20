@@ -4,7 +4,7 @@
   box-sizing: border-box; }
 
 html, body {
-  background-color: #262928; }
+  background-color: #F9F9F9; }
 
 .page {
   background-color: #fff;
@@ -45,7 +45,7 @@ ul.tree {
     padding: 0px;
     margin: 0px; }
     ul.tree li span, ul.tree li a {
-      border: 1px solid #ccc;
+      background-color: #fff;
       display: block;
       width: 100%;
       padding: 5px;
